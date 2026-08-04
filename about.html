@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Pankaj Kumar Sahoo</title>
+<meta name="description" content="About Pankaj Kumar Sahoo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet';">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet';">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</noscript>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+<canvas id="bg-canvas"></canvas>
+<div class="noise-overlay"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel"></span></div>
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">PK</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="journey.html" class="nav-link">Journey</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="knob"><i class="fa-solid fa-moon" style="font-size:11px;"></i></span></button>
+      <button class="burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" data-cursor="violet">
+  <video class="page-hero-video" id="aboutHeroVideo" src="assets/brain.mp4"
+         autoplay muted loop playsinline preload="auto"></video>
+  <button class="page-hero-sound" id="aboutHeroSound" aria-label="Toggle background video sound" data-cursor-label="Sound">
+  </button>
+  <div class="container page-hero-inner reveal in">
+    <span class="eyebrow">About Me</span>
+    <h1 class="section-title">The Story So Far</h1>
+    <p class="section-sub" style="max-width:640px;">A closer look at who I am, what drives me, and how I like to work.</p>
+  </div>
+</section>
+<section class="section" data-cursor="violet">
+  <div class="container about-grid about-grid-full reveal">
+    <div class="about-text">
+      <span class="eyebrow">About Me</span>
+      <h2 class="section-title">Who I Am</h2>
+      <p>I am a professional AI/ML Engineer currently working at Swappl Intelect Solution, Bhubaneswar, Odisha, where I develop intelligent, scalable, and production-ready AI solutions for real-world business applications. My expertise includes Machine Learning, Deep Learning, Generative AI, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and AI chatbot development. I have hands-on experience building end-to-end AI applications using Python, FastAPI, LangChain, TensorFlow, PyTorch, and vector databases such as FAISS, ChromaDB, and Pinecone. I am passionate about leveraging cutting-edge AI technologies to automate workflows, enhance user experiences, and solve complex business challenges. As a continuous learner and problem solver, I stay updated with the latest advancements in AI and cloud technologies while delivering innovative, efficient, and high-quality solutions.
+
+</p>
+      <p>I love turning ideas into real-world applications that create impact and solve problems — bridging the gap between research and product.</p>
+      <p>Outside of coursework, I spend most of my time shipping small AI-powered demos end-to-end — from model to a working interface someone can actually click through.</p>
+      <div class="chip-row">
+        <div class="chip"><i class="fa-solid fa-puzzle-piece"></i> Problem Solver</div>
+        <div class="chip"><i class="fa-solid fa-bolt"></i> Quick Learner</div>
+        <div class="chip"><i class="fa-solid fa-people-group"></i> Team Player</div>
+        <div class="chip"><i class="fa-solid fa-microchip"></i> AI Enthusiast</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="background:var(--bg-alt);padding-top:0;">
+  <div class="container reveal" style="text-align:center;">
+    <a href="skills.html" class="btn btn-outline magnetic"><i class="fa-solid fa-layer-group"></i> See My Skills</a>
+    <a href="journey.html" class="btn btn-outline magnetic"><i class="fa-solid fa-route"></i> See My Journey</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:14px;"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+        <p style="color:var(--text-dim);font-size:14px;max-width:280px;">Building AI-Powered Solutions for a Smarter Tomorrow.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <div class="footer-links">
+          <a href="index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a>
+          <a href="projects.html">Projects</a><a href="journey.html">Journey</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Connect With Me</h5>
+        <div class="footer-social">
+          <a href="tel:+918260933150" aria-label="Call" data-tooltip="Call" class="magnetic social-icon"><i class="fa-solid fa-phone"></i></a>
+          <a href="mailto:pankajsahoo8260@gmail.com" aria-label="Email" data-tooltip="Email" class="magnetic social-icon"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/pankaj-kumar-sahoo-00835b2a7/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn" class="magnetic social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/PankajKumarsahoo" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub" class="magnetic social-icon"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pankaj Kumar Sahoo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Assistant chat" aria-hidden="true">
+    <div class="chat-panel-head">
+      <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chat-panel-title">
+        <div class="cpt-name">Pankaj's Assistant</div>
+        <div class="cpt-status">● Online</div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <iframe id="chatFrame" class="chat-frame" title="AI Assistant chat" loading="lazy"></iframe>
+  </div>
+  <div class="fab-peek" id="fabPeek">👋 Ask me anything about Pankaj!</div>
+  <button class="chat-fab" id="chatFab" aria-label="Open AI assistant">
+    <span class="fab-pulse"></span>
+    <i class="fa-solid fa-robot" id="chatFabIcon"></i>
+  </button>
+</div>
+
+<div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop Yield Predictor | Pankaj Kumar Sahoo</title>
+<meta name="description" content="Forecasts regional crop yield from weather, soil and historical harvest data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet';">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet';">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</noscript>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-theme="dark">
+<canvas id="bg-canvas"></canvas>
+<div class="noise-overlay"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel"></span></div>
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">PK</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="../skills.html" class="nav-link">Skills</a>
+      <a href="../projects.html" class="nav-link active">Projects</a>
+      <a href="../journey.html" class="nav-link">Journey</a>
+      <a href="../blog.html" class="nav-link">Blog</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="knob"><i class="fa-solid fa-moon" style="font-size:11px;"></i></span></button>
+      <button class="burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="detail-hero" data-cursor="pink">
+  <div class="container reveal in">
+    <a href="../projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> All projects</a>
+    <span class="eyebrow">Data Science</span>
+    <h1 class="section-title">Crop Yield Predictor</h1>
+    <p class="section-sub" style="max-width:640px;">Forecasts regional crop yield from weather, soil and historical harvest data.</p>
+    <div class="project-stack" style="margin-top:14px;"><span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Flask</span></div>
+  </div>
+</section>
+<section class="section">
+  <div class="container reveal" style="max-width:760px;">
+    <div class="project-thumb" style="height:220px;border-radius:var(--radius);margin-bottom:32px;"><i class="fa-solid fa-wheat-awn" style="font-size:64px;"></i></div>
+    <div class="detail-content"><p>This is placeholder project copy — swap in your own write-up when you're ready.</p>
+<p>A regression model that combines historical yield records with weather and soil
+readings to forecast next season's crop yield for a given district, wrapped in a
+small Flask API for other tools to call.</p>
+<p>Demo highlights (edit freely):
+- Feature set covering rainfall, temperature and soil composition
+- Model comparison across linear, tree-based and gradient-boosted regressors
+- REST endpoint returning a yield estimate with a confidence range</p></div>
+    <div class="btn-row" style="margin-top:32px;"><a href="#" class="btn btn-outline magnetic" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a> <a href="#" class="btn btn-outline magnetic" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source code</a></div>
+  </div>
+</section>
+<section class="section" style="background:var(--bg-alt);padding-top:60px;padding-bottom:60px;">
+  <div class="container reveal" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <a href="land-mining-detection.html" class="btn btn-outline magnetic"><i class="fa-solid fa-arrow-left"></i> Land Mining Detection</a>
+    <a href="resume-screener-ai.html" class="btn btn-outline magnetic">Resume Screener AI <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo" style="margin-bottom:14px;"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+        <p style="color:var(--text-dim);font-size:14px;max-width:280px;">Building AI-Powered Solutions for a Smarter Tomorrow.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <div class="footer-links">
+          <a href="../index.html">Home</a><a href="../about.html">About</a><a href="../skills.html">Skills</a>
+          <a href="../projects.html">Projects</a><a href="../journey.html">Journey</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Connect With Me</h5>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/pankaj-kumar-sahoo-00835b2a7/" target="_blank" rel="noopener" aria-label="LinkedIn" class="magnetic"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/PankajKumarsahoo" target="_blank" rel="noopener" aria-label="GitHub" class="magnetic"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/pankajsahoo_demo" target="_blank" rel="noopener" aria-label="X (Twitter)" class="magnetic"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="mailto:pankajsahoo8260@gmail.com" target="_blank" rel="noopener" aria-label="Email" class="magnetic"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pankaj Kumar Sahoo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Assistant chat" aria-hidden="true">
+    <div class="chat-panel-head">
+      <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chat-panel-title">
+        <div class="cpt-name">Pankaj's Assistant</div>
+        <div class="cpt-status">● Online</div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <iframe id="chatFrame" class="chat-frame" title="AI Assistant chat" loading="lazy"></iframe>
+  </div>
+  <div class="fab-peek" id="fabPeek">👋 Ask me anything about Pankaj!</div>
+  <button class="chat-fab" id="chatFab" aria-label="Open AI assistant">
+    <span class="fab-pulse"></span>
+    <i class="fa-solid fa-robot" id="chatFabIcon"></i>
+  </button>
+</div>
+
+<div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+
+<script src="../script.js"></script>
+</body>
+</html>

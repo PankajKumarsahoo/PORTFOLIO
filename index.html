@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Pankaj Kumar Sahoo</title>
+<meta name="description" content="AI/ML Engineer portfolio home page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet';">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet';">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</noscript>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+<canvas id="bg-canvas"></canvas>
+<div class="noise-overlay"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel"></span></div>
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">PK</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="journey.html" class="nav-link">Journey</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="knob"><i class="fa-solid fa-moon" style="font-size:11px;"></i></span></button>
+      <button class="burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home" data-cursor="cyan">
+  <video class="hero-bg-video" id="heroBgVideo" src="assets/hero-ai.mp4"
+         autoplay muted loop playsinline preload="auto"></video>
+  <button class="hero-sound-hint" id="heroSoundHint" aria-label="Toggle background video sound" data-cursor-label="Sound">
+  </button>
+
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-tags"><span>&lt;/&gt; AI/ML Engineer</span><span>Data Enthusiast</span><span>Problem Solver</span></div>
+      <h1><span class="hi">Hi, I'm</span><span class="name" data-text="Pankaj Kumar Sahoo">Pankaj Kumar Sahoo</span></h1>
+      <p class="hero-role">Building <span class="grad-text">Intelligent Solutions</span> with AI, Machine Learning &amp; Full Stack Development</p>
+      <p class="hero-desc">Passionate about solving real-world problems with data, building AI-powered applications and creating meaningful impact — one model, one product at a time.</p>
+      <div class="btn-row">
+        <a href="projects.html" class="btn btn-primary magnetic"><i class="fa-solid fa-diagram-project"></i> Explore My Work</a>
+        <a href="assets/resume.pdf" class="btn btn-outline magnetic" download><i class="fa-solid fa-download"></i> Download CV</a>
+      </div>
+      <div class="stat-row" id="statRow">
+        <div class="stat"><b data-count="10">0</b><span>Projects</span></div>
+        <div class="stat"><b data-count="5">0</b><span>Technologies</span></div>
+        <div class="stat"><b data-count="2">0</b><span>Years Learning</span></div>
+        <div class="stat"><b data-count="1">0</b><span>Goal · Impact</span></div>
+      </div>
+      <div class="stack-row">
+        <i class="fa-brands fa-python" title="Python"></i>
+        <i class="fa-solid fa-brain" title="TensorFlow"></i>
+        <i class="fa-solid fa-fire" title="PyTorch"></i>
+        <i class="fa-solid fa-database" title="SQL"></i>
+        <i class="fa-brands fa-html5" title="HTML"></i>
+        <i class="fa-brands fa-css3-alt" title="CSS"></i>
+        <i class="fa-brands fa-js" title="JavaScript"></i>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="orbit-ring r3"></div>
+      <div class="orbit-ring r2"></div>
+      <div class="orbit-ring"><div class="orbit-dot" style="top:-5px;left:50%;"></div></div>
+      <a href="about.html" class="photo-frame card" aria-label="About Pankaj" data-cursor-label="About">
+        <div class="photo-frame-inner"><img src="assets/profile.jpg" alt="Pankaj Kumar Sahoo" class="profile-img" loading="eager" onerror="this.style.display='none';(this.closest('.photo-frame')||this.parentElement).classList.add('photo-fallback');"></div>
+      </a>
+      <div class="float-card fc1"><span class="kw">print</span>(<span class="str">"Building AI"</span></div>
+      <div class="float-card fc2">for a better tomorrow<span class="dim">")</span></div>
+      <div class="social-rail ">
+        <a href="tel:+918260933150" aria-label="Call" data-tooltip="Call" class="magnetic social-icon"><i class="fa-solid fa-phone"></i></a>
+        <a href="mailto:pankajsahoo8260@gmail.com" aria-label="Email" data-tooltip="Email" class="magnetic social-icon"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/pankaj-kumar-sahoo-00835b2a7/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn" class="magnetic social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/PankajKumarsahoo" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub" class="magnetic social-icon"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span></span></div>
+</section>
+
+<section class="section" id="quick-about" data-cursor="violet">
+  <div class="container about-grid about-grid-full reveal">
+    <div class="about-text">
+      <span class="eyebrow">About Me</span>
+      <h2 class="section-title">Who I Am</h2>
+      <p>I am a professional AI/ML Engineer currently working at **Swappl Intelect Solution, Bhubaneswar, Odisha**, where I develop intelligent, scalable, and production-ready AI solutions for real-world business applications. My expertise includes Machine Learning, Deep Learning, Generative AI, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and AI chatbot development. I have hands-on experience building end-to-end AI applications using Python, FastAPI, LangChain, TensorFlow, PyTorch, and vector databases such as FAISS, ChromaDB, and Pinecone. I am passionate about leveraging cutting-edge AI technologies to automate workflows, enhance user experiences, and solve complex business challenges. As a continuous learner and problem solver, I stay updated with the latest advancements in AI and cloud technologies while delivering innovative, efficient, and high-quality solutions.
+</p>
+      <p>I love turning ideas into real-world applications that create impact and solve problems — bridging the gap between research and product.</p>
+      <div class="chip-row">
+        <div class="chip"><i class="fa-solid fa-puzzle-piece"></i> Problem Solver</div>
+        <div class="chip"><i class="fa-solid fa-bolt"></i> Quick Learner</div>
+        <div class="chip"><i class="fa-solid fa-people-group"></i> Team Player</div>
+        <div class="chip"><i class="fa-solid fa-microchip"></i> AI Enthusiast</div>
+      </div>
+      <a href="about.html" class="btn btn-outline magnetic" style="margin-top:28px;"><i class="fa-solid fa-arrow-right"></i> Full Story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preview-projects" style="background:var(--bg-alt);" data-cursor="pink">
+  <div class="container">
+    <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+      <div>
+        <span class="eyebrow">Projects</span>
+        <h2 class="section-title">Some Things I've Built</h2>
+      </div>
+      <a href="projects.html" class="magnetic" style="color:var(--cyan);font-weight:600;font-size:14px;">View All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="projects-grid reveal stagger">
+      <a href="projects/medical-research-chatbot.html" class="card project-card" data-cat="web-apps ai-ml" style="--i:0;" data-cursor-label="View">
+        <div class="project-thumb"><span class="project-tag">Web App</span><img src="assets/medical-research-chatbot.jpg" alt="Medical Research Chatbot" class="thumb-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></div>
+        <div class="project-body">
+          <h4>Medical Research Chatbot</h4>
+          <p>AI-powered RAG chatbot for research paper analysis and summarization.</p>
+          <div class="project-stack"><span>Python</span><span>LangChain</span><span>Streamlit</span><span>FAISS</span></div>
+        </div>
+      </a>
+      <a href="projects/eyecareai.html" class="card project-card" data-cat="ai-ml data-science" style="--i:1;" data-cursor-label="View">
+        <div class="project-thumb"><span class="project-tag">AI/ML</span><img src="assets/eyecareai.jpg" alt="EyeCareAI" class="thumb-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></div>
+        <div class="project-body">
+          <h4>EyeCareAI</h4>
+          <p>Deep learning model for eye disease prediction from retinal images.</p>
+          <div class="project-stack"><span>TensorFlow</span><span>Keras</span><span>CNN</span><span>OpenCV</span></div>
+        </div>
+      </a>
+      <a href="projects/land-mining-detection.html" class="card project-card" data-cat="ai-ml data-science" style="--i:2;" data-cursor-label="View">
+        <div class="project-thumb"><span class="project-tag">Data Science</span><img src="assets/land-mining-detection.jpg" alt="Land Mining Detection" class="thumb-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></div>
+        <div class="project-body">
+          <h4>Land Mining Detection</h4>
+          <p>Detect illegal mining activities using satellite imagery and deep learning.</p>
+          <div class="project-stack"><span>Python</span><span>Deep Learning</span><span>Streamlit</span><span>Rasterio</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preview-skills" data-cursor="cyan">
+  <div class="container">
+    <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+      <div>
+        <span class="eyebrow">Skills</span>
+        <h2 class="section-title">Technologies &amp; Tools I Work With</h2>
+      </div>
+      <a href="skills.html" class="magnetic" style="color:var(--cyan);font-weight:600;font-size:14px;">All Categories <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="skills-grid reveal stagger">
+      <a href="skills/languages.html" class="card skill-cat" style="--i:0;" data-cursor-label="Explore">
+        <h4>Languages</h4>
+        <div class="skill-icons"><i class="fa-brands fa-python"></i><i class="fa-brands fa-js"></i><i class="fa-solid fa-database"></i><i class="fa-solid fa-code"></i></div>
+        <div class="bar-label"><span>Proficiency</span><span>90%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
+      </a><a href="skills/tools-frameworks.html" class="card skill-cat" style="--i:1;" data-cursor-label="Explore">
+        <h4>Tools & Frameworks</h4>
+        <div class="skill-icons"><i class="fa-solid fa-cloud-arrow-up"></i><i class="fa-brands fa-git-alt"></i><i class="fa-solid fa-robot"></i><i class="fa-solid fa-flask"></i></div>
+        <div class="bar-label"><span>Proficiency</span><span>85%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
+      </a><a href="skills/frontend.html" class="card skill-cat" style="--i:2;" data-cursor-label="Explore">
+        <h4>Frontend</h4>
+        <div class="skill-icons"><i class="fa-solid fa-shield-halved"></i><i class="fa-solid fa-layer-group"></i><i class="fa-brands fa-js"></i><i class="fa-brands fa-react"></i></div>
+        <div class="bar-label"><span>Proficiency</span><span>80%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-width="80"></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preview-journey" style="background:var(--bg-alt);" data-cursor="amber">
+  <div class="container">
+    <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+      <div>
+        <span class="eyebrow">Journey</span>
+        <h2 class="section-title">How I Got Here</h2>
+      </div>
+      <a href="journey.html" class="magnetic" style="color:var(--cyan);font-weight:600;font-size:14px;">Full Timeline <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="timeline reveal stagger">
+      <div class="timeline-item" style="--i:0;">
+        <div class="timeline-dot">03</div>
+        <div class="timeline-body card">
+          <span class="timeline-date">2024</span>
+          <h4>Started building AI-powered products</h4>
+          <p>Shipped a RAG chatbot, a medical imaging model and a satellite-imagery detector.</p>
+        </div>
+      </div>
+      <div class="timeline-item" style="--i:1;">
+        <div class="timeline-dot">04</div>
+        <div class="timeline-body card">
+          <span class="timeline-date">Now</span>
+          <h4>Open to new opportunities</h4>
+          <p>Looking to collaborate on impactful AI/ML and full-stack projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preview-blog" data-cursor="violet">
+  <div class="container">
+    <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+      <div>
+        <span class="eyebrow">Blog</span>
+        <h2 class="section-title">Latest Articles</h2>
+      </div>
+      <a href="blog.html" class="magnetic" style="color:var(--cyan);font-weight:600;font-size:14px;">View All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="blog-grid reveal stagger">
+      <a href="blog/rag-explained.html" class="card blog-card" style="--i:0;" data-cursor-label="Read">
+        <div class="blog-thumb"><img src="assets/ragblog.jpg" alt="Retrieval Augmented Generation Explained" loading="lazy"></div>
+        <div class="blog-body">
+          <span class="blog-tag">RAG</span>
+          <h4>Retrieval Augmented Generation Explained</h4>
+          <p>Understanding RAG and how it enhances AI model responses with external knowledge.</p>
+          <div class="blog-meta"><span>May 30, 2024</span><span>5 min read</span></div>
+        </div>
+      </a>
+      <a href="blog/beginners-guide-deep-learning.html" class="card blog-card" style="--i:1;" data-cursor-label="Read">
+        <div class="blog-thumb"><img src="assets/image.png" alt="A Beginner's Guide to Deep Learning" loading="lazy"></div>
+        <div class="blog-body">
+          <span class="blog-tag">AI/ML</span>
+          <h4>A Beginner's Guide to Deep Learning</h4>
+          <p>Deep dive into neural networks, training, and real-world applications.</p>
+          <div class="blog-meta"><span>May 10, 2024</span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a href="blog/top-10-python-libraries.html" class="card blog-card" style="--i:2;" data-cursor-label="Read">
+        <div class="blog-thumb"><img src="assets/top10blog.png" alt="Top 10 Python Libraries for Data Scientists" loading="lazy"></div>
+        <div class="blog-body">
+          <span class="blog-tag">Data Science</span>
+          <h4>Top 10 Python Libraries for Data Scientists</h4>
+          <p>Essential Python libraries that every data scientist should know.</p>
+          <div class="blog-meta"><span>Apr 28, 2024</span><span>4 min read</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-band" id="preview-contact" data-cursor="green">
+  <div class="container reveal cta-band-inner">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2 class="section-title" style="margin-bottom:10px;">Let's Build Something Together</h2>
+      <p class="section-sub" style="max-width:520px;">Have a project in mind, an internship opening, or just want to talk AI? I'd love to hear from you.</p>
+    </div>
+    <div class="btn-row" style="margin-bottom:0;">
+      <a href="contact.html" class="btn btn-primary magnetic"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+      <a href="tel:+918260933150" class="btn btn-outline magnetic" data-tooltip="Call now"><i class="fa-solid fa-phone"></i> Call Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:14px;"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+        <p style="color:var(--text-dim);font-size:14px;max-width:280px;">Building AI-Powered Solutions for a Smarter Tomorrow.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <div class="footer-links">
+          <a href="index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a>
+          <a href="projects.html">Projects</a><a href="journey.html">Journey</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Connect With Me</h5>
+        <div class="footer-social">
+          <a href="tel:+918260933150" aria-label="Call" data-tooltip="Call" class="magnetic social-icon"><i class="fa-solid fa-phone"></i></a>
+          <a href="mailto:pankajsahoo8260@gmail.com" aria-label="Email" data-tooltip="Email" class="magnetic social-icon"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/pankaj-kumar-sahoo-00835b2a7/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn" class="magnetic social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/PankajKumarsahoo" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub" class="magnetic social-icon"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pankaj Kumar Sahoo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Assistant chat" aria-hidden="true">
+    <div class="chat-panel-head">
+      <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chat-panel-title">
+        <div class="cpt-name">Pankaj's Assistant</div>
+        <div class="cpt-status">● Online</div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <iframe id="chatFrame" class="chat-frame" title="AI Assistant chat" loading="lazy"></iframe>
+  </div>
+  <div class="fab-peek" id="fabPeek">👋 Ask me anything about Pankaj!</div>
+  <button class="chat-fab" id="chatFab" aria-label="Open AI assistant">
+    <span class="fab-pulse"></span>
+    <i class="fa-solid fa-robot" id="chatFabIcon"></i>
+  </button>
+</div>
+
+<div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
