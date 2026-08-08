@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certifications | Pankaj Kumar Sahoo</title>
+<meta name="description" content="Certifications and credentials earned by Pankaj Kumar Sahoo in AI, Machine Learning and Cloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet';">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet';">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</noscript>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Small page-local additions — everything else reuses tokens already in style.css */
+  .cert-filter-note{color:var(--text-dim);font-size:14px;margin-bottom:36px;max-width:560px;}
+  .badge-card{position:relative;display:flex;flex-direction:column;}
+  .badge-card .cert-issuer-row{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;
+  }
+  .badge-card .cert-date{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-faint);
+    background:var(--surface-2);padding:4px 10px;border-radius:100px;white-space:nowrap;
+  }
+  .badge-card .cert-issuer{
+    font-size:12px;color:var(--cyan);font-weight:600;letter-spacing:.02em;
+  }
+  .badge-card .cert-link{
+    margin-top:14px;display:inline-flex;align-items:center;gap:6px;
+    font-size:12.5px;font-weight:600;color:var(--text-dim);transition:color .2s ease,gap .2s ease;
+    cursor:pointer;background:none;border:none;padding:0;font-family:inherit;
+  }
+  .badge-card .cert-link:hover{color:var(--cyan);gap:9px;}
+  .badge-card .cert-link i{font-size:10.5px;}
+  .cert-id{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-faint);
+    margin-top:6px;word-break:break-all;
+  }
+  .cert-stats-row{display:flex;gap:28px;flex-wrap:wrap;margin:8px 0 48px;padding-top:24px;border-top:1px solid var(--border);}
+  .cert-stat b{font-family:'Space Grotesk',sans-serif;font-size:24px;display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cert-stat span{font-size:12px;color:var(--text-dim);}
+
+  /* Certificate lightbox modal */
+  .cert-modal{
+    position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .25s ease;padding:24px;
+  }
+  .cert-modal.open{opacity:1;pointer-events:auto;}
+  .cert-modal-backdrop{
+    position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(4px);
+  }
+  .cert-modal-box{
+    position:relative;max-width:min(880px,92vw);max-height:90vh;
+    background:var(--surface-2);border:1px solid var(--border);border-radius:16px;
+    padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px;
+    transform:scale(.96);transition:transform .25s ease;
+  }
+  .cert-modal.open .cert-modal-box{transform:scale(1);}
+  .cert-modal-img{
+    max-width:100%;max-height:70vh;border-radius:8px;object-fit:contain;
+    background:#fff;
+  }
+  .cert-modal-title{font-weight:600;font-size:15px;color:var(--text);text-align:center;}
+  .cert-modal-close{
+    position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;
+    background:var(--surface-1);border:1px solid var(--border);color:var(--text-dim);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;
+  }
+  .cert-modal-close:hover{color:var(--cyan);border-color:var(--cyan);}
+  .cert-modal-openlink{font-size:12.5px;color:var(--cyan);font-weight:600;}
+</style>
+</head>
+<body data-theme="dark">
+<canvas id="bg-canvas"></canvas>
+<div class="noise-overlay"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel"></span></div>
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">PK</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="certifications.html" class="nav-link active">Certifications</a>
+      <a href="journey.html" class="nav-link">Journey</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="knob"><i class="fa-solid fa-moon" style="font-size:11px;"></i></span></button>
+      <button class="burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" id="certifications-hero" data-cursor="amber">
+  <video class="page-hero-video" id="certHeroVideo" src="assets/hero-ai.mp4"
+         autoplay muted loop playsinline preload="auto"></video>
+  <button class="page-hero-sound" id="certHeroSound" aria-label="Toggle background video sound" data-cursor-label="Sound"></button>
+  <div class="container page-hero-inner reveal in">
+    <span class="eyebrow">Credentials</span>
+    <h1 class="section-title" style="font-size:clamp(30px,4.5vw,44px);">Certifications</h1>
+    <p class="section-sub">Courses, specializations and cloud credentials I've completed while building toward production‑grade AI systems.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:64px;" data-cursor="cyan">
+  <div class="container">
+
+    <div class="cert-stats-row reveal">
+      <div class="cert-stat"><b>6</b><span>Certifications</span></div>
+      <div class="cert-stat"><b>4</b><span>Issuing Platforms</span></div>
+      <div class="cert-stat"><b>2</b><span>Cloud Credentials</span></div>
+    </div>
+
+    <div class="badge-grid reveal stagger">
+
+      <div class="card badge-card" style="--i:0;">
+        <i class="fa-solid fa-brain"></i>
+        <div class="cert-issuer-row">
+          <span class="cert-issuer">DeepLearning.AI</span>
+          <span class="cert-date">2024</span>
+        </div>
+        <h4>Deep Learning Specialization</h4>
+        <p>Neural networks, CNNs, RNNs and optimization techniques — the foundation behind the vision and NLP models in my projects.</p>
+        <button type="button" class="cert-link" data-cert="assets/certificates/deep-learning-specialization.jpg" data-title="Deep Learning Specialization — DeepLearning.AI">
+          View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+
+      <div class="card badge-card" style="--i:1;">
+        <i class="fa-solid fa-robot"></i>
+        <div class="cert-issuer-row">
+          <span class="cert-issuer">DeepLearning.AI</span>
+          <span class="cert-date">2024</span>
+        </div>
+        <h4>Generative AI with LLMs</h4>
+        <p>Fine-tuning, RLHF and deployment patterns for large language models — direct groundwork for my RAG chatbot work.</p>
+        <button type="button" class="cert-link" data-cert="assets/certificates/genai-with-llms.jpg" data-title="Generative AI with LLMs — DeepLearning.AI">
+          View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+
+      <div class="card badge-card" style="--i:2;">
+        <i class="fa-brands fa-aws"></i>
+        <div class="cert-issuer-row">
+          <span class="cert-issuer">Amazon Web Services</span>
+          <span class="cert-date">2024</span>
+        </div>
+        <h4>AWS Certified Cloud Practitioner</h4>
+        <p>Core AWS services, security and cost management — the cloud fundamentals behind deploying AI applications at scale.</p>
+        <button type="button" class="cert-link" data-cert="assets/certificates/aws-cloud-practitioner.jpg" data-title="AWS Certified Cloud Practitioner — Amazon Web Services">
+          View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+
+      <div class="card badge-card" style="--i:3;">
+        <i class="fa-solid fa-chart-line"></i>
+        <div class="cert-issuer-row">
+          <span class="cert-issuer">Stanford Online</span>
+          <span class="cert-date">2023</span>
+        </div>
+        <h4>Machine Learning Specialization</h4>
+        <p>Supervised and unsupervised learning, model evaluation and classic ML algorithms taught by Andrew Ng.</p>
+        <button type="button" class="cert-link" data-cert="assets/certificates/ml-specialization.jpg" data-title="Machine Learning Specialization — Stanford Online">
+          View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+
+      <div class="card badge-card" style="--i:4;">
+        <i class="fa-brands fa-python"></i>
+        <div class="cert-issuer-row">
+          <span class="cert-issuer">IBM</span>
+          <span class="cert-date">2023</span>
+        </div>
+        <h4>Python for Data Science, AI & Development</h4>
+        <p>Python fundamentals, Pandas, NumPy and API integration — the daily toolkit behind every project I ship.</p>
+        <button type="button" class="cert-link" data-cert="assets/python-for-data-science.jpg" data-title="Python for Data Science, AI & Development — IBM">
+          View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+
+      <div class="card badge-card" style="--i:5;">
+        <i class="fa-solid fa-database"></i>
+        <div class="cert-issuer-row">
+          <span class="cert-issuer">Coursera</span>
+          <span class="cert-date">2023</span>
+        </div>
+        <h4>SQL for Data Science</h4>
+        <p>Relational data modeling and query optimization — used to power the analytics behind my dashboards and pipelines.</p>
+        <button type="button" class="cert-link" data-cert="assets/certificates/sql-for-data-science.jpg" data-title="SQL for Data Science — Coursera">
+          View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+
+    </div>
+
+    
+
+  </div>
+</section>
+
+<section class="section cta-band" data-cursor="green">
+  <div class="container reveal cta-band-inner">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2 class="section-title" style="margin-bottom:10px;">Let's Build Something Together</h2>
+      <p class="section-sub" style="max-width:520px;">Have a project in mind, an internship opening, or just want to talk AI? I'd love to hear from you.</p>
+    </div>
+    <div class="btn-row" style="margin-bottom:0;">
+      <a href="contact.html" class="btn btn-primary magnetic"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+      <a href="tel:+918260933150" class="btn btn-outline magnetic" data-tooltip="Call now"><i class="fa-solid fa-phone"></i> Call Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:14px;"><div class="logo-mark">PK</div> Pankaj Kumar Sahoo</a>
+        <p style="color:var(--text-dim);font-size:14px;max-width:280px;">Building AI-Powered Solutions for a Smarter Tomorrow.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <div class="footer-links">
+          <a href="index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a>
+          <a href="projects.html">Projects</a><a href="certifications.html">Certifications</a>
+          <a href="journey.html">Journey</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Connect With Me</h5>
+        <div class="footer-social">
+          <a href="tel:+918260933150" aria-label="Call" data-tooltip="Call" class="magnetic social-icon"><i class="fa-solid fa-phone"></i></a>
+          <a href="mailto:pankajsahoo8260@gmail.com" aria-label="Email" data-tooltip="Email" class="magnetic social-icon"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/pankaj-kumar-sahoo-00835b2a7/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn" class="magnetic social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/PankajKumarsahoo" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub" class="magnetic social-icon"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pankaj Kumar Sahoo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- Certificate lightbox -->
+<div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="cert-modal-backdrop" id="certModalBackdrop"></div>
+  <div class="cert-modal-box">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <img id="certModalImg" class="cert-modal-img" src="" alt="Certificate">
+    <div class="cert-modal-title" id="certModalTitle"></div>
+    <a id="certModalOpenNew" href="#" target="_blank" rel="noopener" class="cert-modal-openlink">
+      Open full size <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Assistant chat" aria-hidden="true">
+    <div class="chat-panel-head">
+      <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chat-panel-title">
+        <div class="cpt-name">Pankaj's Assistant</div>
+        <div class="cpt-status">● Online</div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <iframe id="chatFrame" class="chat-frame" title="AI Assistant chat" loading="lazy"></iframe>
+  </div>
+  <div class="fab-peek" id="fabPeek">👋 Ask me anything about Pankaj!</div>
+  <button class="chat-fab" id="chatFab" aria-label="Open AI assistant">
+    <span class="fab-pulse"></span>
+    <i class="fa-solid fa-robot" id="chatFabIcon"></i>
+  </button>
+</div>
+
+<div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+
+<script src="script.js"></script>
+<script>
+  // Certificate lightbox logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('certModal');
+    const modalImg = document.getElementById('certModalImg');
+    const modalTitle = document.getElementById('certModalTitle');
+    const modalOpenNew = document.getElementById('certModalOpenNew');
+    const closeBtn = document.getElementById('certModalClose');
+    const backdrop = document.getElementById('certModalBackdrop');
+
+    document.querySelectorAll('.cert-link[data-cert]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const src = link.getAttribute('data-cert');
+        const title = link.getAttribute('data-title') || '';
+        modalImg.src = src;
+        modalImg.alt = title || 'Certificate';
+        modalTitle.textContent = title;
+        modalOpenNew.href = src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  });
+</script>
+</body>
+</html>
