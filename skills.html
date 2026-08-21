@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  (function(){
+    var saved = localStorage.getItem('site-theme');
+    document.documentElement.setAttribute('data-theme', saved || 'dark');
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skills | Pankaj Kumar Sahoo</title>
 <meta name="description" content="Technologies and tools Pankaj works with.">
@@ -14,7 +20,7 @@
 </noscript>
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark">
+<body>
 <canvas id="bg-canvas"></canvas>
 <div class="noise-overlay"></div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -33,6 +39,7 @@
       <a href="about.html" class="nav-link">About</a>
       <a href="skills.html" class="nav-link active">Skills</a>
       <a href="projects.html" class="nav-link">Projects</a>
+      <a href="certifications.html" class="nav-link">Certifications</a>
       <a href="journey.html" class="nav-link">Journey</a>
       <a href="blog.html" class="nav-link">Blog</a>
       <a href="contact.html" class="nav-link">Contact</a>
@@ -47,8 +54,7 @@
 <section class="page-hero" data-cursor="cyan">
   <video class="page-hero-video" id="skillsHeroVideo" src="assets/hero-ai.mp4"
          autoplay muted loop playsinline preload="auto"></video>
-  <button class="page-hero-sound" id="skillsHeroSound" aria-label="Toggle background video sound" data-cursor-label="Sound">
-  </button>
+  
   <div class="container page-hero-inner reveal in">
     <span class="eyebrow">Skills</span>
     <h1 class="section-title">Technologies & Tools I Work With</h1>

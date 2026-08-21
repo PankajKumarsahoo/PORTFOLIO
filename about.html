@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  (function(){
+    var saved = localStorage.getItem('site-theme');
+    document.documentElement.setAttribute('data-theme', saved || 'dark');
+  })();
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Pankaj Kumar Sahoo</title>
 <meta name="description" content="About Pankaj Kumar Sahoo.">
@@ -14,7 +21,7 @@
 </noscript>
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark">
+<body>
 <canvas id="bg-canvas"></canvas>
 <div class="noise-overlay"></div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -48,8 +55,7 @@
 <section class="page-hero" data-cursor="violet">
   <video class="page-hero-video" id="aboutHeroVideo" src="assets/brain.mp4"
          autoplay muted loop playsinline preload="auto"></video>
-  <button class="page-hero-sound" id="aboutHeroSound" aria-label="Toggle background video sound" data-cursor-label="Sound">
-  </button>
+
   <div class="container page-hero-inner reveal in">
     <span class="eyebrow">About Me</span>
     <h1 class="section-title">The Story So Far</h1>
@@ -136,5 +142,6 @@
 <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>

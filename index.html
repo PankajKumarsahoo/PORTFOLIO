@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  (function(){
+    var saved = localStorage.getItem('site-theme');
+    document.documentElement.setAttribute('data-theme', saved || 'dark');
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home | Pankaj Kumar Sahoo</title>
@@ -14,7 +20,7 @@
 </noscript>
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark">
+<body>
 <canvas id="bg-canvas"></canvas>
 <div class="noise-overlay"></div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -48,8 +54,7 @@
 <section class="hero" id="home" data-cursor="cyan">
   <video class="hero-bg-video" id="heroBgVideo" src="assets/hero-ai.mp4"
          autoplay muted loop playsinline preload="auto"></video>
-  <button class="hero-sound-hint" id="heroSoundHint" aria-label="Toggle background video sound" data-cursor-label="Sound">
-  </button>
+ 
 
   <div class="container hero-grid">
     <div>
@@ -103,9 +108,9 @@
     <div class="about-text">
       <span class="eyebrow">About Me</span>
       <h2 class="section-title">Who I Am</h2>
-      <p>I am a professional AI/ML Engineer currently working at **Swappl Intelect Solution, Bhubaneswar, Odisha**, where I develop intelligent, scalable, and production-ready AI solutions for real-world business applications. My expertise includes Machine Learning, Deep Learning, Generative AI, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and AI chatbot development. I have hands-on experience building end-to-end AI applications using Python, FastAPI, LangChain, TensorFlow, PyTorch, and vector databases such as FAISS, ChromaDB, and Pinecone. I am passionate about leveraging cutting-edge AI technologies to automate workflows, enhance user experiences, and solve complex business challenges. As a continuous learner and problem solver, I stay updated with the latest advancements in AI and cloud technologies while delivering innovative, efficient, and high-quality solutions.
+      <p>I am a professional AI/ML Engineer currently working at **Swappl Intelect Solution, Bhubaneswar, Odisha**, where I develop intelligent, 
+        scalable, and production-ready AI solutions for real-world business applications. 
 </p>
-      <p>I love turning ideas into real-world applications that create impact and solve problems — bridging the gap between research and product.</p>
       <div class="chip-row">
         <div class="chip"><i class="fa-solid fa-puzzle-piece"></i> Problem Solver</div>
         <div class="chip"><i class="fa-solid fa-bolt"></i> Quick Learner</div>

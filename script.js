@@ -12,16 +12,28 @@
 })();
 
 /* ============ THEME TOGGLE ============ */
+/* ============ THEME TOGGLE (persists across all pages) ============ */
 const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-if(themeToggle){
-  themeToggle.addEventListener('click', ()=>{
-    const isDark = body.getAttribute('data-theme') === 'dark';
-    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    themeToggle.querySelector('i').className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-  });
+const root = document.documentElement; // <html> — single source of truth for theme, same on every page
+
+function applyThemeIcon(theme){
+  if(!themeToggle) return;
+  const icon = themeToggle.querySelector('i');
+  if(icon) icon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
 }
 
+// icon needs to match whatever theme the inline script (in <head>) already applied
+applyThemeIcon(root.getAttribute('data-theme') || 'dark');
+
+if(themeToggle){
+  themeToggle.addEventListener('click', ()=>{
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', newTheme);
+    localStorage.setItem('site-theme', newTheme);
+    applyThemeIcon(newTheme);
+  });
+}
 /* ============ MOBILE NAV ============ */
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
@@ -191,17 +203,48 @@ if(!reduceMotion && !isCoarse){
 }
 
 /* ============ CONTACT FORM ============ */
+/* Sends the message straight to Pankaj's inbox via Web3Forms (free, no backend needed).
+   Get a free access key at https://web3forms.com and paste it into the hidden
+   "access_key" input in contact.html — everything else here already works. */
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 if(contactForm){
-  contactForm.addEventListener('submit', (e)=>{
+  contactForm.addEventListener('submit', async (e)=>{
     e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const accessKey = contactForm.querySelector('input[name="access_key"]')?.value || '';
+
+    if(!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY'){
+      if(formStatus) formStatus.textContent = 'Form is not set up yet — add a Web3Forms access key in contact.html.';
+      showToast('Contact form needs a Web3Forms access key first.');
+      return;
+    }
+
     if(formStatus) formStatus.textContent = 'Sending…';
-    setTimeout(()=>{
-      if(formStatus) formStatus.textContent = "Message sent! I'll get back to you soon. ✅";
-      contactForm.reset();
-      showToast('Message sent successfully!');
-    }, 900);
+    if(submitBtn) submitBtn.disabled = true;
+
+    try{
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+      });
+      const result = await res.json();
+
+      if(res.ok && result.success){
+        if(formStatus) formStatus.textContent = "Message sent! I'll get back to you soon. ✅";
+        contactForm.reset();
+        showToast('Message sent successfully!');
+      } else {
+        if(formStatus) formStatus.textContent = 'Something went wrong — please email me directly instead.';
+        showToast('Could not send message. Try again later.');
+      }
+    } catch(err){
+      if(formStatus) formStatus.textContent = 'Network error — please email me directly instead.';
+      showToast('Could not send message. Check your connection.');
+    } finally {
+      if(submitBtn) submitBtn.disabled = false;
+    }
   });
 }
 

@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  (function(){
+    var saved = localStorage.getItem('site-theme');
+    document.documentElement.setAttribute('data-theme', saved || 'dark');
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Pankaj Kumar Sahoo</title>
 <meta name="description" content="Get in touch with Pankaj Kumar Sahoo.">
@@ -14,7 +20,7 @@
 </noscript>
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark">
+<body>
 <canvas id="bg-canvas"></canvas>
 <div class="noise-overlay"></div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -48,8 +54,7 @@
 <section class="page-hero" data-cursor="green">
   <video class="page-hero-video" id="contactHeroVideo" src="assets/hero-ai.mp4"
          autoplay muted loop playsinline preload="auto"></video>
-  <button class="page-hero-sound" id="contactHeroSound" aria-label="Toggle background video sound" data-cursor-label="Sound">
-  </button>
+  
   <div class="container page-hero-inner reveal in">
     <span class="eyebrow">Contact Me</span>
     <h1 class="section-title">Let's Work Together!</h1>
@@ -87,11 +92,14 @@
         </div>
       </div>
       <form class="card" id="contactForm">
+        <input type="hidden" name="access_key" value="62499ead-0870-43bb-95b7-5370bbcc466d">
+        <input type="hidden" name="subject" value="New message from your portfolio site">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
         <div class="form-row">
-          <input class="form-field" type="text" placeholder="Your Name" required>
-          <input class="form-field" type="email" placeholder="Your Email" required>
+          <input class="form-field" type="text" name="name" placeholder="Your Name" required>
+          <input class="form-field" type="email" name="email" placeholder="Your Email" required>
         </div>
-        <textarea class="form-field" placeholder="Your Message" required style="margin-bottom:16px;"></textarea>
+        <textarea class="form-field" name="message" placeholder="Your Message" required style="margin-bottom:16px;"></textarea>
         <button class="btn btn-primary magnetic" type="submit" style="width:100%;justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
         <div class="form-status" id="formStatus"></div>
       </form>

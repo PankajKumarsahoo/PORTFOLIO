@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  (function(){
+    var saved = localStorage.getItem('site-theme');
+    document.documentElement.setAttribute('data-theme', saved || 'dark');
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Journey | Pankaj Kumar Sahoo</title>
 <meta name="description" content="Pankaj Kumar Sahoo's learning and career journey.">
@@ -14,7 +20,7 @@
 </noscript>
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark">
+<body>
 <canvas id="bg-canvas"></canvas>
 <div class="noise-overlay"></div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -48,8 +54,7 @@
 <section class="page-hero" data-cursor="amber">
   <video class="page-hero-video" id="journeyHeroVideo" src="assets/hero-ai.mp4"
          autoplay muted loop playsinline preload="auto"></video>
-  <button class="page-hero-sound" id="journeyHeroSound" aria-label="Toggle background video sound" data-cursor-label="Sound">
-  </button>
+ 
   <div class="container page-hero-inner reveal in">
     <span class="eyebrow">Journey</span>
     <h1 class="section-title">How I Got Here</h1>
