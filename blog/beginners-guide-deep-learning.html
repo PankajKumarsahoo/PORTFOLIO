@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  (function(){
+    var saved = localStorage.getItem('site-theme');
+    document.documentElement.setAttribute('data-theme', saved || 'dark');
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Beginner's Guide to Deep Learning | Pankaj Kumar Sahoo</title>
@@ -14,7 +20,7 @@
 </noscript>
 <link rel="stylesheet" href="../style.css">
 </head>
-<body data-theme="dark">
+<body>
 <canvas id="bg-canvas"></canvas>
 <div class="noise-overlay"></div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>

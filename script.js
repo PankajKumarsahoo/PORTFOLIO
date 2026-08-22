@@ -233,6 +233,7 @@ if(contactForm){
 
       if(res.ok && result.success){
         if(formStatus) formStatus.textContent = "Message sent! I'll get back to you soon. ✅";
+        sendGreetingReply(contactForm); // fire-and-forget greeting email to the visitor
         contactForm.reset();
         showToast('Message sent successfully!');
       } else {
@@ -246,6 +247,28 @@ if(contactForm){
       if(submitBtn) submitBtn.disabled = false;
     }
   });
+}
+
+/* ============ AUTO-GREETING TO VISITOR (via EmailJS) ============
+   Web3Forms only notifies YOU. This sends a short "thanks, got your
+   message" greeting back to whoever filled out the form, using EmailJS's
+   free plan (200 emails/month, auto-reply supported).
+   Setup: sign up at emailjs.com, connect your Gmail, create a template,
+   then paste your Service ID, Template ID and Public Key below. */
+const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = 'YOUR_EMAILJS_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+
+function sendGreetingReply(form){
+  if(typeof emailjs === 'undefined') return;
+  if(EMAILJS_PUBLIC_KEY.startsWith('YOUR_')) return; // not configured yet — skip quietly
+
+  const data = Object.fromEntries(new FormData(form));
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    to_name: data.name,
+    to_email: data.email,
+    message: data.message
+  }, EMAILJS_PUBLIC_KEY).catch(()=>{ /* greeting is best-effort; don't block the main flow */ });
 }
 
 /* ============ COPY EMAIL ============ */
