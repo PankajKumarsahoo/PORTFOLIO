@@ -156,6 +156,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 3
 }
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;position:relative;z-index:2;}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr;}}
+@media(max-width:520px){.hero-grid{gap:40px;}}
 #projects{ overflow:hidden; }
 #projects > .container{ position:relative; z-index:2; }
 
@@ -305,6 +306,25 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 3
 .fc1{top:38%;left:-10%;animation-delay:0s;}
 .fc2{bottom:8%;right:-6%;animation-delay:1.2s;}
 @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+
+/* --- Scale hero photo/orbit decoration down for phones so nothing overflows --- */
+@media(max-width:520px){
+  .hero-photo-wrap{ padding:0 20px; margin-top:20px; }
+  .orbit-ring{ width:280px; height:280px; }
+  .orbit-ring.r2{ width:225px; height:225px; }
+  .orbit-ring.r3{ width:320px; height:320px; }
+  .photo-frame{ width:200px; height:230px; }
+  .float-card{ font-size:11px; padding:8px 12px; }
+  .fc1{ left:2%; top:34%; }
+  .fc2{ right:2%; bottom:6%; }
+}
+@media(max-width:360px){
+  .orbit-ring{ width:230px; height:230px; }
+  .orbit-ring.r2{ width:185px; height:185px; }
+  .orbit-ring.r3{ width:270px; height:270px; }
+  .photo-frame{ width:170px; height:195px; }
+  .float-card{ display:none; } /* too tight to read at this width, hide rather than overlap */
+}
 .social-rail{position:static;display:flex;flex-direction:column;gap:16px;}
 @media(max-width:640px){.social-rail{flex-direction:row;}}
 .social-rail a{
@@ -412,6 +432,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 3
   display:flex;align-items:center;justify-content:center;}
 .about-visual .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.08) 1px,transparent 1px);background-size:32px 32px;}
 .about-visual i{font-size:120px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;z-index:1;}
+@media(max-width:520px){.about-visual i{font-size:72px;}}
 
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 @media(max-width:900px){.skills-grid{grid-template-columns:1fr;}}
@@ -914,4 +935,3 @@ a.contact-icon {
 /* full-width About text — no side photo panel, used on the About page
    and the home page's About preview */
 .about-grid-full{ display:block; max-width:760px; }
-
