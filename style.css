@@ -32,6 +32,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+html, body{max-width:100%;overflow-x:hidden;}
 body{
   background:var(--bg);
   color:var(--text);
@@ -149,6 +150,17 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 3
     transition:transform .35s ease;opacity:0;}
   .nav-links.open{transform:translateY(0);opacity:1;}
   .burger{display:flex;}
+}
+@media(max-width:480px){
+  nav{ padding:14px 16px; }
+  .logo{ font-size:14px; gap:6px; }
+  .logo-mark{ width:32px; height:32px; font-size:13px; }
+  .theme-toggle{ width:46px; height:24px; }
+  .theme-toggle .knob{ width:18px; height:18px; }
+  [data-theme="light"] .theme-toggle .knob{ transform:translateX(22px); }
+  .burger{ width:36px; height:36px; }
+  .nav-right{ gap:8px; }
+  .nav-links{ top:60px; }
 }
 
 .hero{
@@ -935,3 +947,52 @@ a.contact-icon {
 /* full-width About text — no side photo panel, used on the About page
    and the home page's About preview */
 .about-grid-full{ display:block; max-width:760px; }
+
+/* ============================================================
+   MOBILE LAYOUT FIXES (home page + global)
+   ============================================================ */
+
+/* Hero: tighten spacing and stop the stat row from squeezing 4
+   columns into very narrow screens */
+@media(max-width:480px){
+  .hero{ padding-top:88px; }
+  .hero-tags{ font-size:11px; gap:6px; }
+  .hero-tags span{ padding:4px 10px; }
+  .hero-desc{ font-size:14.5px; }
+  .btn-row{ gap:10px; margin-bottom:32px; }
+  .btn{ padding:12px 20px; font-size:13.5px; flex:1 1 auto; justify-content:center; }
+
+  .stat-row{ flex-wrap:wrap; row-gap:18px; column-gap:12px; }
+  .stat{ flex:0 0 calc(50% - 6px); padding-right:0; }
+  .stat b{ font-size:22px; }
+
+  .stack-row{ gap:16px; margin-top:26px; }
+  .stack-row i{ font-size:22px; }
+}
+
+/* Section heads with a trailing "View all" link wrap awkwardly at
+   phone widths — stack them instead of squeezing side by side */
+@media(max-width:600px){
+  .section-head[style*="justify-content:space-between"]{
+    align-items:flex-start !important;
+  }
+}
+
+/* CTA band buttons: avoid the call button clipping the icon text */
+@media(max-width:480px){
+  .cta-band-inner .btn-row{ width:100%; }
+  .cta-band-inner .btn-row .btn{ flex:1 1 100%; }
+}
+
+/* Footer grid: extra breathing room + prevent the footer-bottom row
+   from overflowing when the copyright line is close to the edge */
+@media(max-width:480px){
+  footer{ padding:44px 0 22px; }
+  .footer-bottom{ justify-content:flex-start; }
+}
+
+/* Chat widget FAB shouldn't overlap the to-top button on short mobile
+   viewports; nudge to-top up a little on small screens */
+@media(max-width:520px){
+  .to-top{ bottom:86px; right:16px; width:44px; height:44px; }
+}
