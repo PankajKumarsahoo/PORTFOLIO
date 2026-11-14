@@ -20,8 +20,11 @@ function applyThemeIcon(theme){
   if(!themeToggle) return;
   const icon = themeToggle.querySelector('i');
   if(icon) icon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+<<<<<<< HEAD
   themeToggle.setAttribute('aria-pressed', theme === 'light');
   themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+=======
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
 }
 
 // icon needs to match whatever theme the inline script (in <head>) already applied
@@ -323,6 +326,53 @@ if(downloadCvBtn){
   });
 }
 
+<<<<<<< HEAD
+=======
+/* ============ AMBIENT VIDEO + CLICK-TO-UNMUTE SOUND — reusable everywhere ============
+   Used for the big hero video (home), the projects background video, and the
+   compact page-hero banner video on every other page. Hovering the section
+   unmutes automatically (unless the user has manually muted via the button);
+   clicking the round sound button always toggles it directly, so the sound
+   control is clickable on every section that has one. */
+function initAmbientVideo(sectionEl, videoEl, hintEl){
+  if(!videoEl || !sectionEl) return;
+  if(reduceMotion){
+    videoEl.pause();
+    videoEl.style.display = 'none';
+    if(hintEl) hintEl.style.display = 'none';
+    return;
+  }
+  videoEl.volume = 0.55;
+  videoEl.addEventListener('error', ()=>{ videoEl.style.display = 'none'; if(hintEl) hintEl.style.display = 'none'; });
+
+  /* Video always plays in the background, regardless of the pointer.
+     Sound is controlled only by clicking the round sound button below —
+     hovering/leaving the section no longer mutes or restarts it. */
+  videoEl.play().catch(()=>{});
+
+  if(hintEl){
+    hintEl.addEventListener('click', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      videoEl.muted = !videoEl.muted;
+      hintEl.classList.toggle('active', !videoEl.muted);
+      hintEl.querySelector('i').className = videoEl.muted
+        ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+      if(!videoEl.muted) videoEl.play().catch(()=>{});
+    });
+  }
+}
+
+initAmbientVideo(document.getElementById('home'), document.getElementById('heroBgVideo'), document.getElementById('heroSoundHint'));
+initAmbientVideo(document.getElementById('projects'), document.getElementById('projectsBgVideo'), document.getElementById('projectsSoundHint'));
+/* every compact page-hero banner (About/Skills/Projects list/Journey/Blog/Contact/detail pages) */
+document.querySelectorAll('.page-hero').forEach(sec=>{
+  const vid = sec.querySelector('.page-hero-video');
+  const hint = sec.querySelector('.page-hero-sound');
+  initAmbientVideo(sec, vid, hint);
+});
+
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
 /* ============ PARTICLE BACKGROUND CANVAS ============ */
 const canvas = document.getElementById('bg-canvas');
 if(canvas){
@@ -332,7 +382,10 @@ if(canvas){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
+<<<<<<< HEAD
   const PAL = () => document.documentElement.getAttribute('data-theme') === 'light' ? ['200,121,44','91,70,50'] : ['200,121,44','244,217,160'];
+=======
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
   function initParticles(){
     const count = Math.min(70, Math.floor(window.innerWidth/22));
     particles = Array.from({length:count}, ()=> ({
@@ -341,7 +394,11 @@ if(canvas){
       r: Math.random()*1.6 + 0.4,
       vx: (Math.random()-0.5)*0.25,
       vy: (Math.random()-0.5)*0.25,
+<<<<<<< HEAD
       hue: Math.random() > 0.5 ? 0 : 1
+=======
+      hue: Math.random() > 0.5 ? '139,92,246' : '34,211,238'
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
     }));
   }
   function animateParticles(){
@@ -352,7 +409,11 @@ if(canvas){
       if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r*1.8, 0, Math.PI*2);
+<<<<<<< HEAD
       ctx.fillStyle = `rgba(${PAL()[p.hue]},0.5)`;
+=======
+      ctx.fillStyle = `rgba(${p.hue},0.55)`;
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
       ctx.fill();
     });
     for(let i=0;i<particles.length;i++){
@@ -362,7 +423,11 @@ if(canvas){
         if(d < 120){
           ctx.beginPath();
           ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+<<<<<<< HEAD
           ctx.strokeStyle = `rgba(${PAL()[0]},${0.12*(1-d/120)})`;
+=======
+          ctx.strokeStyle = `rgba(139,92,246,${0.12*(1-d/120)})`;
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -387,14 +452,22 @@ function buildChatFrameSrcDoc(){
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
+<<<<<<< HEAD
 :root{${document.documentElement.getAttribute('data-theme')==='light' ? '--violet:#C8792C;--gold:#E3A867;--cyan:#9A5518;--pink:#C8792C;--green:#6F7A3D;--bg:#FBF2E1;--bg2:#FFF9EE;--border:rgba(91,70,50,.18);--text:#2E2012;--dim:#5B4632;--inp:#FFFDF8;' : '--violet:#C8792C;--gold:#F4D9A0;--cyan:#F4D9A0;--pink:#E3A867;--green:#B5BF86;--bg:#1A130C;--bg2:#2A1F15;--border:rgba(244,217,160,.16);--text:#F6EBD5;--dim:#CBB794;--inp:#221810;'}}
+=======
+:root{--violet:#8b5cf6;--cyan:#22d3ee;--pink:#f472b6;--green:#34d399;--bg:#111627;--bg2:#161c30;--border:rgba(148,163,184,.16);--text:#e7ecf7;--dim:#94a3b8;}
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
 *{box-sizing:border-box;}
 body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
 .win{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;}
 .msg{max-width:82%;padding:11px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;animation:in .3s ease;}
 @keyframes in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .msg.bot{background:var(--bg2);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start;}
+<<<<<<< HEAD
 .msg.user{background:linear-gradient(120deg,var(--violet),var(--gold));color:#2A1A0C;border-bottom-right-radius:4px;align-self:flex-end;}
+=======
+.msg.user{background:linear-gradient(120deg,var(--violet),var(--cyan));color:#fff;border-bottom-right-radius:4px;align-self:flex-end;}
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
 .dots{display:inline-flex;gap:4px;}
 .dots span{width:6px;height:6px;border-radius:50%;background:var(--dim);animation:blink 1.2s infinite;}
 .dots span:nth-child(2){animation-delay:.2s;}
@@ -404,9 +477,15 @@ body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text
 .chip{padding:7px 12px;border-radius:100px;border:1px solid var(--border);font-size:11.5px;color:var(--dim);background:var(--bg2);cursor:pointer;}
 .chip:hover{border-color:var(--cyan);color:var(--text);}
 .input-row{display:flex;gap:8px;padding:14px;border-top:1px solid var(--border);flex-shrink:0;}
+<<<<<<< HEAD
 input{flex:1;background:var(--inp);border:1px solid var(--border);border-radius:11px;padding:11px 14px;color:var(--text);font-size:13.5px;outline:none;}
 input:focus{border-color:var(--violet);}
 .send{width:40px;height:40px;border-radius:11px;background:linear-gradient(120deg,var(--violet),var(--gold));color:#2A1A0C;border:0;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+=======
+input{flex:1;background:#0d111f;border:1px solid var(--border);border-radius:11px;padding:11px 14px;color:var(--text);font-size:13.5px;outline:none;}
+input:focus{border-color:var(--violet);}
+.send{width:40px;height:40px;border-radius:11px;background:linear-gradient(120deg,var(--violet),var(--cyan));color:#fff;border:0;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
 ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-thumb{background:var(--bg2);border-radius:8px;}
 </style></head>
 <body>
@@ -493,6 +572,7 @@ if(chatFab && chatPanel){
     const widget = document.getElementById('chatWidget');
     if(chatPanel.classList.contains('open') && widget && !widget.contains(e.target)) closeChat();
   });
+<<<<<<< HEAD
 }
 
 /* ============ CONTACT MAP: style toggle ============ */
@@ -533,3 +613,6 @@ if(chatFab && chatPanel){
     c.style.setProperty("--my", (e.clientY - r.top) + "px");
   }, {passive:true});
 })();
+=======
+}
+>>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
