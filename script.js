@@ -24,7 +24,12 @@ function applyThemeIcon(theme){
   themeToggle.setAttribute('aria-pressed', theme === 'light');
   themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
 =======
+<<<<<<< HEAD
+  themeToggle.setAttribute('aria-pressed', theme === 'light');
+  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+=======
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
 }
 
 // icon needs to match whatever theme the inline script (in <head>) already applied
@@ -328,6 +333,8 @@ if(downloadCvBtn){
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* ============ AMBIENT VIDEO + CLICK-TO-UNMUTE SOUND — reusable everywhere ============
    Used for the big hero video (home), the projects background video, and the
    compact page-hero banner video on every other page. Hovering the section
@@ -373,6 +380,7 @@ document.querySelectorAll('.page-hero').forEach(sec=>{
 });
 
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
 /* ============ PARTICLE BACKGROUND CANVAS ============ */
 const canvas = document.getElementById('bg-canvas');
 if(canvas){
@@ -385,7 +393,11 @@ if(canvas){
 <<<<<<< HEAD
   const PAL = () => document.documentElement.getAttribute('data-theme') === 'light' ? ['200,121,44','91,70,50'] : ['200,121,44','244,217,160'];
 =======
+<<<<<<< HEAD
+  const PAL = () => document.documentElement.getAttribute('data-theme') === 'light' ? ['200,121,44','91,70,50'] : ['200,121,44','244,217,160'];
+=======
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
   function initParticles(){
     const count = Math.min(70, Math.floor(window.innerWidth/22));
     particles = Array.from({length:count}, ()=> ({
@@ -397,8 +409,12 @@ if(canvas){
 <<<<<<< HEAD
       hue: Math.random() > 0.5 ? 0 : 1
 =======
+<<<<<<< HEAD
+      hue: Math.random() > 0.5 ? 0 : 1
+=======
       hue: Math.random() > 0.5 ? '139,92,246' : '34,211,238'
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
     }));
   }
   function animateParticles(){
@@ -412,8 +428,12 @@ if(canvas){
 <<<<<<< HEAD
       ctx.fillStyle = `rgba(${PAL()[p.hue]},0.5)`;
 =======
+<<<<<<< HEAD
+      ctx.fillStyle = `rgba(${PAL()[p.hue]},0.5)`;
+=======
       ctx.fillStyle = `rgba(${p.hue},0.55)`;
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
       ctx.fill();
     });
     for(let i=0;i<particles.length;i++){
@@ -426,8 +446,12 @@ if(canvas){
 <<<<<<< HEAD
           ctx.strokeStyle = `rgba(${PAL()[0]},${0.12*(1-d/120)})`;
 =======
+<<<<<<< HEAD
+          ctx.strokeStyle = `rgba(${PAL()[0]},${0.12*(1-d/120)})`;
+=======
           ctx.strokeStyle = `rgba(139,92,246,${0.12*(1-d/120)})`;
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -455,8 +479,12 @@ function buildChatFrameSrcDoc(){
 <<<<<<< HEAD
 :root{${document.documentElement.getAttribute('data-theme')==='light' ? '--violet:#C8792C;--gold:#E3A867;--cyan:#9A5518;--pink:#C8792C;--green:#6F7A3D;--bg:#FBF2E1;--bg2:#FFF9EE;--border:rgba(91,70,50,.18);--text:#2E2012;--dim:#5B4632;--inp:#FFFDF8;' : '--violet:#C8792C;--gold:#F4D9A0;--cyan:#F4D9A0;--pink:#E3A867;--green:#B5BF86;--bg:#1A130C;--bg2:#2A1F15;--border:rgba(244,217,160,.16);--text:#F6EBD5;--dim:#CBB794;--inp:#221810;'}}
 =======
+<<<<<<< HEAD
+:root{${document.documentElement.getAttribute('data-theme')==='light' ? '--violet:#C8792C;--gold:#E3A867;--cyan:#9A5518;--pink:#C8792C;--green:#6F7A3D;--bg:#FBF2E1;--bg2:#FFF9EE;--border:rgba(91,70,50,.18);--text:#2E2012;--dim:#5B4632;--inp:#FFFDF8;' : '--violet:#C8792C;--gold:#F4D9A0;--cyan:#F4D9A0;--pink:#E3A867;--green:#B5BF86;--bg:#1A130C;--bg2:#2A1F15;--border:rgba(244,217,160,.16);--text:#F6EBD5;--dim:#CBB794;--inp:#221810;'}}
+=======
 :root{--violet:#8b5cf6;--cyan:#22d3ee;--pink:#f472b6;--green:#34d399;--bg:#111627;--bg2:#161c30;--border:rgba(148,163,184,.16);--text:#e7ecf7;--dim:#94a3b8;}
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
 *{box-sizing:border-box;}
 body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
 .win{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;}
@@ -466,8 +494,12 @@ body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text
 <<<<<<< HEAD
 .msg.user{background:linear-gradient(120deg,var(--violet),var(--gold));color:#2A1A0C;border-bottom-right-radius:4px;align-self:flex-end;}
 =======
+<<<<<<< HEAD
+.msg.user{background:linear-gradient(120deg,var(--violet),var(--gold));color:#2A1A0C;border-bottom-right-radius:4px;align-self:flex-end;}
+=======
 .msg.user{background:linear-gradient(120deg,var(--violet),var(--cyan));color:#fff;border-bottom-right-radius:4px;align-self:flex-end;}
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
 .dots{display:inline-flex;gap:4px;}
 .dots span{width:6px;height:6px;border-radius:50%;background:var(--dim);animation:blink 1.2s infinite;}
 .dots span:nth-child(2){animation-delay:.2s;}
@@ -482,10 +514,16 @@ input{flex:1;background:var(--inp);border:1px solid var(--border);border-radius:
 input:focus{border-color:var(--violet);}
 .send{width:40px;height:40px;border-radius:11px;background:linear-gradient(120deg,var(--violet),var(--gold));color:#2A1A0C;border:0;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 =======
+<<<<<<< HEAD
+input{flex:1;background:var(--inp);border:1px solid var(--border);border-radius:11px;padding:11px 14px;color:var(--text);font-size:13.5px;outline:none;}
+input:focus{border-color:var(--violet);}
+.send{width:40px;height:40px;border-radius:11px;background:linear-gradient(120deg,var(--violet),var(--gold));color:#2A1A0C;border:0;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+=======
 input{flex:1;background:#0d111f;border:1px solid var(--border);border-radius:11px;padding:11px 14px;color:var(--text);font-size:13.5px;outline:none;}
 input:focus{border-color:var(--violet);}
 .send{width:40px;height:40px;border-radius:11px;background:linear-gradient(120deg,var(--violet),var(--cyan));color:#fff;border:0;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
 ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-thumb{background:var(--bg2);border-radius:8px;}
 </style></head>
 <body>
@@ -573,6 +611,9 @@ if(chatFab && chatPanel){
     if(chatPanel.classList.contains('open') && widget && !widget.contains(e.target)) closeChat();
   });
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/main
 }
 
 /* ============ CONTACT MAP: style toggle ============ */
@@ -613,6 +654,9 @@ if(chatFab && chatPanel){
     c.style.setProperty("--my", (e.clientY - r.top) + "px");
   }, {passive:true});
 })();
+<<<<<<< HEAD
+=======
 =======
 }
 >>>>>>> 1d56ec37e38739050bc745085e419bf08f4058af
+>>>>>>> origin/main
